@@ -32,9 +32,14 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.kie.kogito</groupId>-->
+<!--      <artifactId>kogito-quarkus</artifactId>-->
+<!--    </dependency>-->
+
     <dependency>
       <groupId>org.kie.kogito</groupId>
-      <artifactId>kogito-quarkus</artifactId>
+      <artifactId>kogito-codegen</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
