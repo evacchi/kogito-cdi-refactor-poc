@@ -1,20 +1,35 @@
 package org.kie.kogito.app;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.kie.kogito.Model;
+import org.kie.kogito.process.Process;
+
+@javax.enterprise.context.ApplicationScoped()
 public class Processes implements org.kie.kogito.process.Processes {
 
-    private final Application application;
+    @javax.inject.Inject()
+    Application app;
 
-    public Processes(Application application) {
-        this.application = application;
+    @javax.inject.Inject()
+    javax.enterprise.inject.Instance<org.kie.kogito.process.Process<? extends org.kie.kogito.Model>> processes;
+
+    private Map<String, Process<? extends Model>> mappedProcesses = new HashMap<>();
+
+    @javax.annotation.PostConstruct
+    public void setup() {
+        for (Process<? extends Model> process : processes) {
+            mappedProcesses.put(process.id(), process);
+        }
     }
 
-    public org.kie.kogito.process.Process<? extends org.kie.kogito.Model> processById(String processId) {
-        if ("scripts".equals(processId))
-            return new org.acme.travels.ScriptsProcess(application).configure();
-        return null;
+    public Process<? extends Model> processById(String processId) {
+        return mappedProcesses.get(processId);
     }
 
-    public java.util.Collection<String> processIds() {
-        return java.util.Arrays.asList("scripts");
+    public Collection<String> processIds() {
+        return mappedProcesses.keySet();
     }
 }

@@ -1,12 +1,15 @@
-package org.acme.travels;
+package org.acme.travels.generated;
 
+import org.acme.travels.ScriptsModel;
+
+// GENERATED AND INTERNAL
 public class ScriptsProcessInstance extends org.kie.kogito.process.impl.AbstractProcessInstance<ScriptsModel> {
 
-    public ScriptsProcessInstance(org.acme.travels.ScriptsProcess process, ScriptsModel value, org.kie.api.runtime.process.ProcessRuntime processRuntime) {
+    public ScriptsProcessInstance(ScriptsProcess process, ScriptsModel value, org.kie.api.runtime.process.ProcessRuntime processRuntime) {
         super(process, value, processRuntime);
     }
 
-    public ScriptsProcessInstance(org.acme.travels.ScriptsProcess process, ScriptsModel value, java.lang.String businessKey, org.kie.api.runtime.process.ProcessRuntime processRuntime) {
+    public ScriptsProcessInstance(ScriptsProcess process, ScriptsModel value, java.lang.String businessKey, org.kie.api.runtime.process.ProcessRuntime processRuntime) {
         super(process, value, businessKey, processRuntime);
     }
 

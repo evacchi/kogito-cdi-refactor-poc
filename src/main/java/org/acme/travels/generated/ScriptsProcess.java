@@ -1,44 +1,35 @@
-package org.acme.travels;
+package org.acme.travels.generated;
 
 import org.jbpm.process.core.datatype.impl.type.ObjectDataType;
 import org.jbpm.ruleflow.core.RuleFlowProcessFactory;
-import org.drools.core.util.KieFunctions;
 
-@javax.enterprise.context.ApplicationScoped()
-@javax.inject.Named("scripts")
+// GENERATED AND INTERNAL
 public class ScriptsProcess extends org.kie.kogito.process.impl.AbstractProcess<org.acme.travels.ScriptsModel> {
-
-    @javax.inject.Inject()
-    javax.enterprise.inject.Instance<org.kie.api.runtime.process.WorkItemHandler> handlers;
 
     org.kie.kogito.app.Application app;
 
-    public ScriptsProcess() {
-    }
-
-    @javax.inject.Inject()
     public ScriptsProcess(org.kie.kogito.app.Application app) {
         super(app.config().process());
         this.app = app;
     }
 
-    public org.acme.travels.ScriptsProcessInstance createInstance(org.acme.travels.ScriptsModel value) {
-        return new org.acme.travels.ScriptsProcessInstance(this, value, this.createLegacyProcessRuntime());
+    public ScriptsProcessInstance createInstance(org.acme.travels.ScriptsModel value) {
+        return new ScriptsProcessInstance(this, value, this.createLegacyProcessRuntime());
     }
 
-    public org.acme.travels.ScriptsProcessInstance createInstance(java.lang.String businessKey, org.acme.travels.ScriptsModel value) {
-        return new org.acme.travels.ScriptsProcessInstance(this, value, businessKey, this.createLegacyProcessRuntime());
+    public ScriptsProcessInstance createInstance(java.lang.String businessKey, org.acme.travels.ScriptsModel value) {
+        return new ScriptsProcessInstance(this, value, businessKey, this.createLegacyProcessRuntime());
     }
 
     public org.acme.travels.ScriptsModel createModel() {
         return new org.acme.travels.ScriptsModel();
     }
 
-    public org.acme.travels.ScriptsProcessInstance createInstance(org.kie.kogito.Model value) {
+    public ScriptsProcessInstance createInstance(org.kie.kogito.Model value) {
         return this.createInstance((org.acme.travels.ScriptsModel) value);
     }
 
-    public org.acme.travels.ScriptsProcessInstance createInstance(java.lang.String businessKey, org.kie.kogito.Model value) {
+    public ScriptsProcessInstance createInstance(java.lang.String businessKey, org.kie.kogito.Model value) {
         return this.createInstance(businessKey, (org.acme.travels.ScriptsModel) value);
     }
 
@@ -84,7 +75,8 @@ public class ScriptsProcess extends org.kie.kogito.process.impl.AbstractProcess<
         actionNode3.name("Say Hello");
         actionNode3.action(kcontext -> {
             java.lang.String name = (java.lang.String) kcontext.getVariable("name");
-            System.out.println("Hello " + name);;
+            System.out.println("Hello " + name);
+            ;
         });
         actionNode3.metaData("UniqueId", "_8E2E0452-86B3-4B86-B8A1-CE3B78B0B2EC");
         actionNode3.metaData("elementname", "Say Hello");
@@ -99,7 +91,8 @@ public class ScriptsProcess extends org.kie.kogito.process.impl.AbstractProcess<
         actionNode4.action(kcontext -> {
             java.lang.String name = (java.lang.String) kcontext.getVariable("name");
             java.lang.String message = (java.lang.String) kcontext.getVariable("message");
-            kcontext.setVariable("message", "Hello " + name);;
+            kcontext.setVariable("message", "Hello " + name);
+            ;
         });
         actionNode4.metaData("UniqueId", "_E96920FB-69BF-4C28-9F65-FC3EFAF29AD9");
         actionNode4.metaData("elementname", "Update Message");

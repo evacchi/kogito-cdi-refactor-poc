@@ -7,15 +7,10 @@ import org.kie.kogito.uow.UnitOfWorkManager;
 public class Application implements org.kie.kogito.Application {
 
     @javax.inject.Inject()
-    javax.enterprise.inject.Instance<org.kie.kogito.event.EventPublisher> eventPublishers;
-
-    @org.eclipse.microprofile.config.inject.ConfigProperty(name = "kogito.service.url")
-    java.util.Optional<java.lang.String> kogitoService;
-
-    @javax.inject.Inject()
     org.kie.kogito.Config config;
 
-    Processes processes = new Processes(this);
+    @javax.inject.Inject()
+    Processes processes;
 
     public Config config() {
         return config;
@@ -23,17 +18,6 @@ public class Application implements org.kie.kogito.Application {
 
     public UnitOfWorkManager unitOfWorkManager() {
         return config().process().unitOfWorkManager();
-    }
-
-    @javax.annotation.PostConstruct()
-    public void setup() {
-        if (config().process() != null) {
-            if (eventPublishers != null) {
-                eventPublishers.forEach(publisher -> unitOfWorkManager().eventManager().addPublisher(publisher));
-            }
-            unitOfWorkManager().eventManager().setService(kogitoService.orElse(""));
-            unitOfWorkManager().eventManager().setAddons(config().addons());
-        }
     }
 
     public Processes processes() {
